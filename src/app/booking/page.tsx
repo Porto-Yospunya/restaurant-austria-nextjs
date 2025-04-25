@@ -7,7 +7,7 @@ import { BookContainer } from "@/components/BookComponents";
 import { MenuPDF } from "@/components/MenuComponents";
 import menu from "@/database/menu.test.json";
 
-export default function page() {
+export default function Booking() {
 
   const services = [
     { label: "Eat at restaurant", htmlFor: "restaurant", id: "restaurant" },

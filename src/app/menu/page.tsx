@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { MenuCard, MenuContainer, MenuModal, MenuPDF } from "@/components/MenuComponents";
 import { getMenu } from "@/services/menu";
 
-export default function page() {
+export default function Menu() {
 
   const [isOpen, toggleModal] = useState(false);
   const [menu, setMenu] = useState<{ allMenu: Array<{ category: string, menu: Array<{ name: string, price: string, path: string }> }>, menuPDF: Array<{ path: string }> }>({

@@ -1,6 +1,6 @@
 import { BookContainer as ContactContainer } from "@/components/BookComponents";
 
-export default function page() {
+export default function Contact() {
   return (
     <div className="relative">
       <img
