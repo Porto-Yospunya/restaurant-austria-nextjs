@@ -67,7 +67,6 @@ export default function Booking() {
               title: "text-white font-bold text-[2rem]", 
               children: "grid w-full gap-5" 
             }}
-            formElement={true}
           >
             <input type="date" className="bg-white w-full h-[40px] rounded-[10px] px-2" onChange={handleOnChange} />
             <input type="text" className="bg-white w-full h-[40px] rounded-[10px] px-2" placeholder="Name" onChange={handleOnChange} />
