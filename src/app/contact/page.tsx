@@ -1,6 +1,26 @@
+"use client"
+
 import { BookContainer as ContactContainer } from "@/components/BookComponents";
+import { EmailProps } from "@/interfaces/email";
+import { sendEmail } from "@/lib/contact";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 export default function Contact() {
+
+  const [form, setForm] = useState<EmailProps>();
+
+  const handleOnChange = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+  }
+
+  const handleSendEmail = (event: FormEvent) => {
+    event.preventDefault()
+    sendEmail(form);
+  }
+
   return (
     <div className="relative">
       <img
@@ -15,14 +35,14 @@ export default function Contact() {
         <div className="w-[300px] smartphone:w-[400px] y-tablet:w-[500px]">
           <ContactContainer
             title="Feedback"
-            styles={{ container: "w-full h-[80vh]", title: "text-white font-bold text-[2rem]", children: "grid w-full gap-5" }}
-            formElement={true}
+            styles={{ container: "w-full h-screen x-tablet:h-[80vh]", title: "text-white font-bold text-[2rem]", children: "grid w-full gap-5" }}
+            onSubmit={handleSendEmail}
           >
-            <input type="text" className="bg-white w-full h-[40px] rounded-[10px] px-2" placeholder="Name" />
-            <input type="email" className="bg-white w-full h-[40px] rounded-[10px] px-2" placeholder="Email" />
-            <input type="text" className="bg-white w-full h-[40px] rounded-[10px] px-2" placeholder="Subject" />
-            <textarea className="bg-white rounded-[10px] h-[250px] p-2 resize-none overflow-auto" placeholder="Message"></textarea>
-            <button className="text-white bg-dark-green py-2 rounded-[10px] cursor-pointer w-full" type="submit">Send Message</button>
+            <input type="text" name="name" className="bg-white w-full h-[40px] rounded-[10px] px-2" placeholder="Name" onChange={handleOnChange} />
+            <input type="email" name="email" className="bg-white w-full h-[40px] rounded-[10px] px-2" placeholder="Email" onChange={handleOnChange} />
+            <input type="text" name="subject" className="bg-white w-full h-[40px] rounded-[10px] px-2" placeholder="Subject" onChange={handleOnChange} />
+            <textarea name="message" className="bg-white rounded-[10px] p-2 resize-none overflow-auto h-[250px]" placeholder="Message" onChange={handleOnChange}></textarea>
+            <button className="text-white bg-dark-green py-2 rounded-[10px] cursor-pointer w-full pb-2" type="submit">Send Message</button>
           </ContactContainer>
         </div>
       </div>

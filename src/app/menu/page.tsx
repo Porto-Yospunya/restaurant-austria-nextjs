@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { MenuCard, MenuContainer, MenuModal, MenuPDF } from "@/components/MenuComponents";
-import { getMenu } from "@/services/menu";
+import { getMenu } from "@/lib/menu";
 
 export default function Menu() {
 

@@ -7,7 +7,7 @@ import { GiForkKnifeSpoon } from "react-icons/gi";
 
 import { SliderImage } from "@/components/SliderImage";
 import { ServiceContainer } from "@/components/ServiceContainer";
-import { getImage } from "@/services/image";
+import { getImage } from "@/lib/image";
 
 export default function Home() {
 

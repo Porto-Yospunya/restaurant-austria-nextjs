@@ -1,74 +1,39 @@
 "use client"
 
 import Link from "next/link";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
 
 export const Footer = () => {
 
   const contact = [
-    {
-      title: "Company",
-      className: "flex flex-col gap-2 justify-center",
-      children: [
-        { label: "about us", path: "about", icon: "", type: "section" },
-        { label: "our service", path: "service", icon: "", type: "section" },
-        { label: "privacy policy", path: "", icon: "", type: "section" },
-        { label: "affiliate program", path: "", icon: "", type: "section" },
-      ],
-    },
-    {
-      title: "Get Help",
-      className: "flex flex-col gap-2 justify-center",
-      children: [
-        { label: "FAQ", path: "", icon: "", type: "link" },
-        { label: "shipping", path: "", icon: "", type: "link" },
-        { label: "returns", path: "", icon: "", type: "link" },
-        { label: "order status", path: "", icon: "", type: "link" },
-        { label: "payment options", path: "", icon: "", type: "link" },
-      ],
-    },
-    {
-      title: "Follow Us",
-      className: "grid grid-cols-4 gap-y-5 text-[2rem] items-center justify-center",
-      children: [
-        { label: "", path: "", icon: <FaFacebook />, type: "link" },
-        { label: "", path: "", icon: <FaTwitter />, type: "link" },
-        { label: "", path: "", icon: <FaInstagram />, type: "link" },
-        { label: "", path: "", icon: <FaLinkedin />, type: "link" },
-      ],
-    }
+    { path: "", icon: <FaFacebook />, label: "example" },
+    { path: "", icon: <FaXTwitter />, label: "@exmple" },
+    { path: "", icon: <FaInstagram />, label: "@exmple" },
+    { path: "", icon: <FaWhatsapp />, label: "+0000000000" },
   ];
 
-  const handleToSection = (id: string) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: "smooth" });
-  }
-
   return (
-    <div className="relative top-[80px] flex gap-10 justify-center items-center p-10 bg-dark">
-      <div className="grid y-tablet:grid-cols-2 x-tablet:grid-cols-3 gap-10">
-        {contact.map((header, index) => (
-          <div key={index} className="min-w-[250px] smartphone:min-w-[300px] flex flex-col gap-8">
-            <h1 className="relative after:w-full after:h-[3px] after:rounded-full after:-bottom-3 after:left-0 after:absolute after:bg-dark-green text-[1.2rem] text-white font-bold">{header.title}</h1>
-            <div className={`${header.className} text-white-smoke text-[1.1rem]`}>
-              {header.children && (
-                header.children.map((body, index) => (
-                  body.type === "link" ? (
-                    <Link href={body.path} key={index}>
-                      {body.label && <p className="hover:translate-x-2 hover:text-white duration-300">{body.label}</p>}
-                      {body.icon && <p className="hover:text-white hover:text-[2.5rem] duration-300">{body.icon}</p>}
-                    </Link>
-                  ) : (
-                    <div onClick={() => handleToSection(body.path)} key={index}>
-                      {body.label && <p className="hover:translate-x-2 hover:text-white duration-300 cursor-pointer">{body.label}</p>}
-                      {body.icon && <p className="hover:text-white hover:text-[2.5rem] duration-300">{body.icon}</p>}
-                    </div>
-                  )
-                ))
-              )}
-            </div>
+    <div className="relative top-[80px] flex flex-col gap-10 justify-center items-center py-8 bg-dark">
+      <div className="flex y-tablet:flex-row flex-col justify-center gap-10 text-white px-5">
+        <div>
+          <div className="relative y-tablet:w-[300px] before:bg-dark-green before:absolute before:w-full before:h-1 before:-bottom-2 before:rounded-full font-bold text-[1.2rem] smartphone:text-[1.6rem]">Follow Us</div>
+          <div className="flex flex-col gap-6 py-8">
+            {contact.map((item, index) => (
+              <div key={index} className="hover:translate-x-5 duration-300 flex items-center gap-2">
+                <Link href={item.path} className="flex items-center gap-3 text-[1.5rem] smartphone:text-[2rem]">
+                  <div>{item.icon}</div>
+                  <div className="text-[1rem] smartphone:text-[1.2rem]">
+                    {item.label}
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+        <div>
+          <iframe className="w-full h-[300px] y-tablet:h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3820.5775725404587!2d100.1893586746136!3d16.747916320912996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30dfbe986affc42d%3A0xf04fb558f3130f0!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LiZ4LmA4Lij4Lio4Lin4Lij!5e0!3m2!1sth!2sth!4v1732068647934!5m2!1sth!2sth" />
+        </div>
       </div>
     </div>
   );

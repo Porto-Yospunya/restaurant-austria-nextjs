@@ -25,14 +25,14 @@ export const Navbar = () => {
         <img
           src={"/logo.png"}
           alt="Not Found Logo"
-          className="min-w-[40px] w-[80px]"
+          className="min-w-[80px] max-w-[80px]"
         />
       </div>
       <div className="flex justify-end items-center gap-2 smartphone:gap-5 y-tablet:gap-10 text-[1.2rem] z-3">
         {options.map((option, index) => (
           <div
             key={index}
-            className={`${pathname === option.path && "bg-dark-green text-white py-1 smartphone:py-2 px-2 smartphone:px-4"} text-[1rem] smartphone:text-[1rem] rounded-[10px] duration-300`}
+            className={`${pathname === option.path && "bg-dark-green text-white py-1 smartphone:py-2 px-2 smartphone:px-4"} text-[0.8rem] smartphone:text-[1rem] rounded-[10px] duration-300`}
           >
             <Link href={option.path} onClick={handleToTop}>
               {option.label}

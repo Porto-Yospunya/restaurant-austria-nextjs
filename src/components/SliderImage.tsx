@@ -18,7 +18,7 @@ export const SliderImage = (props: { images: Array<{ path: string }> }) => {
   }, [currentIndex]);
 
   return (
-    <div className="relative flex overflow-hidden h-[calc(100vh-60px)]">
+    <div className="relative flex overflow-hidden h-[300px] y-tablet:h-[400px] x-tablet:h-[700px]">
       {props.images?.map((image, index) => (
         <motion.div
           key={index}
@@ -39,16 +39,16 @@ export const SliderImage = (props: { images: Array<{ path: string }> }) => {
         </motion.div>
       ))}
       <div className="absolute left-0 h-full flex items-center justify-center px-4">
-        <div onClick={prevSlide} className="text-[3rem] p-2 cursor-pointer rounded-full hover:bg-[#ffffff60] hover:shadow-2xl duration-300"><IoIosArrowBack /></div>
+        <div onClick={prevSlide} className="text-[3rem] p-1 y-tablet:p-2 cursor-pointer rounded-full hover:bg-[#ffffff60] hover:shadow-2xl duration-300"><IoIosArrowBack /></div>
       </div>
       <div className="absolute right-0 h-full flex items-center justify-center px-4">
-        <div onClick={nextSlide} className="text-[3rem] p-2 cursor-pointer rounded-full hover:bg-[#ffffff60] hover:shadow-2xl duration-300"><IoIosArrowForward /></div>
+        <div onClick={nextSlide} className="text-[3rem] p-1 y-tablet:p-2 cursor-pointer rounded-full hover:bg-[#ffffff60] hover:shadow-2xl duration-300"><IoIosArrowForward /></div>
       </div>
       <div className="absolute flex w-screen justify-center bottom-[2rem] gap-5 z-5">
         {props.images?.map((_, index) => (
           <motion.div
             key={index}
-            className="p-2 rounded-full bg-white cursor-pointer"
+            className="p-1 y-tablet:p-2 rounded-full bg-white cursor-pointer"
             animate={{ width: currentIndex === index ? "50px" : 0 }}
             transition={{ duration: 1 }}
             onClick={() => setCurrentIndex(index)}
